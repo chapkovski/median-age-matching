@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+ <table class="table table-hover table-striped">
+    <tr>
+        <td>
+        Your position in the age hierarchy:
+        </td>
+        <td>{{ participant.vars.supergroup }}</td>
+    </tr>
+    <tr>
+        <td>
+        Your partner's position in the age hierarchy:
+        </td>
+        <td>{{ player.other.participant.vars.supergroup }}</td>
+    </tr>
+    </table>
+    {% next_button %}
+    {% next_button %}
+{% endblock %}
+
+
