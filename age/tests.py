@@ -7,5 +7,5 @@ import random
 class PlayerBot(Bot):
 
     def play_round(self):
-        yield (pages.Age, {'age': random.randint(0,100) })
+        yield (pages.Age, {'age': random.randint(10,20) })
 

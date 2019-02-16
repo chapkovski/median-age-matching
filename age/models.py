@@ -19,11 +19,18 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+    def creating_session(self):
+        assert len(self.get_players()) % 2 == 0, 'The number of players should be even'
 
     def split_on_age(self):
-        m = median([p.age for p in self.get_players()])
-        for p in self.get_players():
-            p.participant.vars['supergroup'] = 'high' if p.age>= m else 'low'
+
+        ps = sorted(self.get_players(), key=lambda x: x.age)
+        low = ps[:len(ps) // 2]
+        high = ps[len(ps) // 2:]
+        for p in low:
+            p.participant.vars['supergroup'] = 'low'
+        for p in high:
+            p.participant.vars['supergroup'] = 'high'
 
 
 class Group(BaseGroup):
